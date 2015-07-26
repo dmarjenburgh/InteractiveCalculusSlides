@@ -62,6 +62,6 @@ integrate(integrand(0, 0), 0, 0.5)$value
 
 ## Thank you very much
 
-I hope you enjoyed the presentation. Please check out the amazing app and tell your friends on twitter.
+I hope you enjoyed the presentation. Please check out this app and tell your friends on twitter.
 
 [Click here to view the app](https://dmarjenburgh.shinyapps.io/project)
