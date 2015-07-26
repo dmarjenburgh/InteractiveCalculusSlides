@@ -1,0 +1,13 @@
+base
+lattice
+ggplot2
+caret
+randomForest
+AppliedPredictiveModeling
+rpart
+ElemStatLearn
+shiny
+shinyapps
+devtools
+slidify
+knitr
