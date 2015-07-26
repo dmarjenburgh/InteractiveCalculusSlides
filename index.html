@@ -83,21 +83,20 @@ an image of the plot is on the right</p>
     <h2>Calculation of the area</h2>
   </hgroup>
   <article data-timings="">
-    <p>The area of the shaded region is calculated on the server in R. Below is an excerpt of the piece of code</p>
+    <p>The area of the shaded region is calculated on the server in R. Below is an excerpt of the piece of code that calculates the area by integration:</p>
 
 <pre><code class="r">f &lt;- function (x) { sin(2*pi*x) }
 tangentf &lt;- function(x, x0, y0) { 2*pi*cos(2*pi*x0)*(x - x0) + y0 }
 integrand &lt;- function(x0, y0, xvert) {
     function(x) { abs(f(x) - tangentf(x, x0, y0)) }
-    }
-</code></pre>
+}
 
-<p>Calculation of the area is done by integration as follows:</p>
-
-<pre><code class="r">xic &lt;- input$xic; yic &lt;- f(xic) # x and y coordinates for the tangent line
-x_vert &lt;- input$vertx
-x_lower &lt;- min(xic, x_vert); x_upper &lt;- max(xic, x_vert)
-integrate(integrand(xic, yic), x_lower, x_upper)$value       
+area &lt;- function(input) {
+    xic &lt;- input$xic; yic &lt;- f(xic) # x and y coordinates for the tangent line
+    x_vert &lt;- input$vertx
+    x_lower &lt;- min(xic, x_vert); x_upper &lt;- max(xic, x_vert)
+    integrate(integrand(xic, yic), x_lower, x_upper)$value       
+}
 </code></pre>
 
   </article>
@@ -106,12 +105,22 @@ integrate(integrand(xic, yic), x_lower, x_upper)$value
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Thank you very much</h2>
+    <h2>Example</h2>
   </hgroup>
   <article data-timings="">
-    <p>I hope you enjoyed the presentation. Please check out the amazing app and tell your friends on twitter.</p>
+    <p>For example, the default input values for the tangent through <code>(0, 0)</code> and <code>x_upper  = 0.5</code> evaluates to:</p>
 
-<p><a href="https://dmarjenburgh.shinyapps.io/project">Click here</a></p>
+<pre><code class="r">integrate(integrand(0, 0), 0, 0.5)$value
+</code></pre>
+
+<pre><code>## [1] 0.4670883
+</code></pre>
+
+<h2>Thank you very much</h2>
+
+<p>I hope you enjoyed the presentation. Please check out the amazing app and tell your friends on twitter.</p>
+
+<p><a href="https://dmarjenburgh.shinyapps.io/project">Click here to view the app</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -141,7 +150,7 @@ integrate(integrand(xic, yic), x_lower, x_upper)$value
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Thank you very much'>
+        data-slide=4 title='Example'>
          4
       </a>
     </li>
